@@ -6,9 +6,7 @@ import { HomeComponent } from './home.component';
 import { Shell } from '@app/shell/shell.service';
 
 const routes: Routes = [
-  Shell.unAuthenticatedChildRoutes([
-    { path: '', component: HomeComponent, data: { title: extract('Home') } }
-  ])
+  Shell.unAuthenticatedChildRoutes([{ path: '', component: HomeComponent, data: { title: extract('Home') } }])
 ];
 
 @NgModule({

@@ -8,9 +8,8 @@ describe('YoutubePlayerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YoutubePlayerComponent ]
-    })
-    .compileComponents();
+      declarations: [YoutubePlayerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

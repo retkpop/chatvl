@@ -23,7 +23,7 @@ import { NgSelect2Module } from 'ng-select2';
     ModalModule,
     NgxYoutubePlayerModule,
     NgSelect2Module,
-    NgxInputTagModule.forRoot(),
+    NgxInputTagModule.forRoot()
   ],
   declarations: [AddComponent]
 })

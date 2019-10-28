@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {PostService} from '@app/core/service/post.service';
+import { Component, OnInit } from '@angular/core';
+import { PostService } from '@app/core/service/post.service';
 // @ts-ignore
-import {PostDTO} from '@app/core/models/PostDTO';
+import { PostDTO } from '@app/core/models/PostDTO';
 // @ts-ignore
-import {SuggestionsDTO} from '@app/core/models/SuggestionsDTO';
-import {SuggestionsService} from '@app/core/service/suggestions.service';
+import { SuggestionsDTO } from '@app/core/models/SuggestionsDTO';
+import { SuggestionsService } from '@app/core/service/suggestions.service';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +15,7 @@ export class HomeComponent implements OnInit {
   isLoading = false;
   postNews = PostDTO;
   postVieweds = PostDTO;
-  constructor(
-    private postService: PostService
-  ) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -41,16 +39,14 @@ export class HomeComponent implements OnInit {
   }
   getVideoViewed() {
     const viewed = sessionStorage.getItem('viewed');
-    if(viewed) {
+    if (viewed) {
       const viewedParse = JSON.parse(viewed);
       this.postService
         .getVideoViewed(viewedParse)
         .pipe()
-        .subscribe(
-          datas => {
-            this.postVieweds = datas;
-          }
-      );
+        .subscribe(datas => {
+          this.postVieweds = datas;
+        });
     }
   }
 }

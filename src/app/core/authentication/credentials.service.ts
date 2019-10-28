@@ -29,7 +29,7 @@ export class CredentialsService {
   authoritiesConstantsAdmin(): boolean {
     if (this._credentials != null) {
       const data = helper.decodeToken(this._credentials.token);
-      if(data.auth.indexOf('ROLE_ADMIN') === 0) {
+      if (data.auth.indexOf('ROLE_ADMIN') === 0) {
         return true;
       }
     }

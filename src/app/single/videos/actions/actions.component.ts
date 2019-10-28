@@ -1,9 +1,9 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
-import {ActionsDTO} from '@app/core/models/ActionsDTO';
-import {VideosComponent} from '@app/single/videos/videos.component';
-import {PostService} from '@app/core/service/post.service';
-import {CountActionsRes} from '@app/core/models/CountActionsRes';
-import {CredentialsService} from '@app/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { ActionsDTO } from '@app/core/models/ActionsDTO';
+import { VideosComponent } from '@app/single/videos/videos.component';
+import { PostService } from '@app/core/service/post.service';
+import { CountActionsRes } from '@app/core/models/CountActionsRes';
+import { CredentialsService } from '@app/core';
 
 @Component({
   selector: 'app-actions',
@@ -19,8 +19,8 @@ export class ActionsComponent implements OnInit {
   constructor(
     private videosComponent: VideosComponent,
     private postService: PostService,
-    private credentialsService: CredentialsService,
-  ) { }
+    private credentialsService: CredentialsService
+  ) {}
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges(changes: SimpleChanges) {
@@ -33,18 +33,19 @@ export class ActionsComponent implements OnInit {
 
   countAction(postId: number) {
     this.countAllActionByPostId(postId);
-    if(this.credentialsService.isAuthenticated() === true) {
+    if (this.credentialsService.isAuthenticated() === true) {
       this.countActionUserPost(postId);
     }
   }
   actionPost(actionPost: Action) {
-    if(this.credentialsService.isAuthenticated() === true) {
+    if (this.credentialsService.isAuthenticated() === true) {
       this.actionsDTO.action = actionPost;
       this.actionsDTO.post_id = this.videosComponent.postMapping.id;
       this.postService
         .actionPost(this.actionsDTO)
         .pipe()
-        .subscribe(datas => {
+        .subscribe(
+          datas => {
             this.countUserActionsRes = datas;
             this.countAllActionByPostId(this.actionsDTO.post_id);
           },

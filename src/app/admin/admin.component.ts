@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CredentialsService} from '@app/core';
+import { CredentialsService } from '@app/core';
 
 @Component({
   selector: 'app-admin',
@@ -7,12 +7,7 @@ import {CredentialsService} from '@app/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  constructor(private credentialsService: CredentialsService) {}
 
-  constructor(private credentialsService: CredentialsService) {
-
-  }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

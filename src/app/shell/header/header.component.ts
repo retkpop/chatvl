@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService, CredentialsService, I18nService } from '@app/core';
+import {MatSidenav} from '@angular/material';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +11,19 @@ import { AuthenticationService, CredentialsService, I18nService } from '@app/cor
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() sidenav!: MatSidenav;
+
   menuHidden = true;
   isLogged: boolean;
   constructor(
     private router: Router,
+    private titleService: Title,
     private authenticationService: AuthenticationService,
     private credentialsService: CredentialsService,
     private i18nService: I18nService
   ) {
-    if(this.credentialsService.isAuthenticated() === true) {
+    if (this.credentialsService.isAuthenticated() === true) {
       this.isLogged = true;
     }
   }
@@ -48,4 +54,9 @@ export class HeaderComponent implements OnInit {
     const credentials = this.credentialsService.credentials;
     return credentials ? credentials.username : null;
   }
+
+  get title(): string {
+    return this.titleService.getTitle();
+  }
+
 }

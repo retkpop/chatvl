@@ -1,2 +1,21 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div fxFlex>
+  <mat-sidenav-container fxFill>
+    <mat-sidenav
+      #sidenav
+      [mode]="'side'"
+      ngClass.gt-sm="has-border desktopNav"
+      [fixedInViewport]="true"
+      opened
+    >
+      <nav>
+        <mat-list>
+          <app-sidebar></app-sidebar>
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header [sidenav]="sidenav"></app-header>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SuggestionsService} from '@app/core/service/suggestions.service';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Options} from 'select2';
-import {VideosComponent} from '@app/single/videos/videos.component';
-import {CredentialsService} from '@app/core';
+import { SuggestionsService } from '@app/core/service/suggestions.service';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Options } from 'select2';
+import { VideosComponent } from '@app/single/videos/videos.component';
+import { CredentialsService } from '@app/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit {
     private videosComponent: VideosComponent,
     private credentialsService: CredentialsService
   ) {
-    if(this.credentialsService.authoritiesConstantsAdmin() === true) {
+    if (this.credentialsService.authoritiesConstantsAdmin() === true) {
       this.active = true;
     }
     this.createForm();
@@ -36,25 +36,21 @@ export class ToolbarComponent implements OnInit {
     this.updateAddSuggestionsUsingByGet();
   }
   getAllSuggestionUsingByGet() {
-    return this.suggestionsService
-      .getVideoBySlugUsingByGet()
-      .subscribe(suggestions => {
-        this.suggestionss = suggestions;
-        this.options = {
-          multiple: true,
-          tags: true
-        };
-      });
+    return this.suggestionsService.getVideoBySlugUsingByGet().subscribe(suggestions => {
+      this.suggestionss = suggestions;
+      this.options = {
+        multiple: true,
+        tags: true
+      };
+    });
   }
   updateAddSuggestionsUsingByGet() {
     this.addSuggestion.patchValue({
       posts_id: this.videosComponent.postMapping.id
     });
-    return this.suggestionsService
-      .updateAddSuggestionsUsingByGet(this.addSuggestion.value)
-      .subscribe(addSuggestion => {
-        this.isLoading = false;
-      });
+    return this.suggestionsService.updateAddSuggestionsUsingByGet(this.addSuggestion.value).subscribe(addSuggestion => {
+      this.isLoading = false;
+    });
   }
   private createForm() {
     this.addSuggestion = this.formBuilder.group({
@@ -62,5 +58,4 @@ export class ToolbarComponent implements OnInit {
       suggestionss: ['', Validators.required]
     });
   }
-
 }

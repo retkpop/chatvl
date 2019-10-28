@@ -9,8 +9,7 @@ q {
 }
 .homePage {
   .mainPage {
-    margin-top: 70px;
-    margin-left: 240px;
+    margin-top: 90px;
     .bannerHome {
       position: relative;
       .img-banner {
@@ -133,8 +132,11 @@ q {
         .chatvl-simple-endpoint {
           .title {
             padding-right: 24px;
+            height: 40px;
+            margin-bottom: 5px;
             h3 {
               font-size: 1.4rem;
+              margin: 0;
               a {
                 margin: 8px 0 8px;
                 display: -webkit-box;

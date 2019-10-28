@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PostService} from '@app/core/service/post.service';
-import {PostResponse} from '@app/core/models/PostResponse';
+import { PostService } from '@app/core/service/post.service';
+import { PostResponse } from '@app/core/models/PostResponse';
 
 @Component({
   selector: 'app-popular',
@@ -8,10 +8,9 @@ import {PostResponse} from '@app/core/models/PostResponse';
   styleUrls: ['./popular.component.scss']
 })
 export class PopularComponent implements OnInit {
-
   postNews: PostResponse[];
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.getVideoPopular(0, 50);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {SuggestionsService} from '@app/core/service/suggestions.service';
+import { SuggestionsService } from '@app/core/service/suggestions.service';
 // @ts-ignore
-import {SuggestionsDTO} from '@app/core/models/SuggestionsDTO';
+import { SuggestionsDTO } from '@app/core/models/SuggestionsDTO';
 
 @Component({
   selector: 'app-suggestion',
@@ -11,7 +11,7 @@ import {SuggestionsDTO} from '@app/core/models/SuggestionsDTO';
 export class SuggestionComponent implements OnInit {
   suggestions = SuggestionsDTO;
 
-  constructor(private suggestionsService: SuggestionsService) { }
+  constructor(private suggestionsService: SuggestionsService) {}
 
   ngOnInit() {
     this.getSuggestions(0, 6);

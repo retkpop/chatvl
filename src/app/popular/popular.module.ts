@@ -4,12 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PopularRoutingModule } from './popular-routing.module';
 import { PopularComponent } from './popular.component';
 
-
 @NgModule({
   declarations: [PopularComponent],
-  imports: [
-    CommonModule,
-    PopularRoutingModule
-  ]
+  imports: [CommonModule, PopularRoutingModule]
 })
-export class PopularModule { }
+export class PopularModule {}

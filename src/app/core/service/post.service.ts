@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { CredentialsService } from '@app/core';
 import { Videos } from '@app/core/models/Videos';
-import {PostResponse} from '@app/core/models/PostResponse';
-import {ActionsDTO} from '@app/core/models/ActionsDTO';
-import {CountActionsRes} from '@app/core/models/CountActionsRes';
+import { PostResponse } from '@app/core/models/PostResponse';
+import { ActionsDTO } from '@app/core/models/ActionsDTO';
+import { CountActionsRes } from '@app/core/models/CountActionsRes';
 
 export interface DataContext {
   urlVideo: string;
@@ -41,15 +41,15 @@ export class PostService {
   getCategories() {
     return this.http.get<Select2DTO>(`${environment.apiUrl}/api/categories/custom-get-all`);
   }
-  getVideoBySlugUsingByGet(slug:string) {
+  getVideoBySlugUsingByGet(slug: string) {
     // tslint:disable-next-line:max-line-length
     return this.http.get<PostResponse>(`${environment.apiUrl}/api/posts/get-video-by-slug/${slug}`);
   }
-  getPostByIdCat(id:number, page:number, limit:number) {
+  getPostByIdCat(id: number, page: number, limit: number) {
     // tslint:disable-next-line:max-line-length
     return this.http.get<PostResponse[]>(`${environment.apiUrl}/api/categories/cat-id/${id}/${page}/${limit}`);
   }
-  getVideoPopular(page:number, size:number) {
+  getVideoPopular(page: number, size: number) {
     // tslint:disable-next-line:max-line-length
     return this.http.get<PostResponse[]>(`${environment.apiUrl}/api/posts/get-video-popular/${page}/${size}`);
   }
@@ -63,7 +63,8 @@ export class PostService {
   }
   countActionUserByPostIdUsingByGet(postId: number) {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<CountActionsRes>(`${environment.apiUrl}/api/actions/get-by-user-and-post/${postId}`, { withCredentials: true });
+    return this.http.get<CountActionsRes>(`${environment.apiUrl}/api/actions/get-by-user-and-post/${postId}`, {
+      withCredentials: true
+    });
   }
-
 }

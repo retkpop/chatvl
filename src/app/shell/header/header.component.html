@@ -1,65 +1,43 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button data-toggle="collapse" data-target="#navbar-top-collapse" type="button" class="navbar-toggle btnTopNavLeft">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="fa fa-bars"></span>
+<mat-toolbar class="mat-elevation-z6 navbar" color="primary">
+  <div fxLayoutAlign="start center">
+    <button class="menu-button" mat-icon-button (click)="sidenav.toggle()">
+      <i class="fas fa-bars"></i>
     </button>
-    <a class="navbar-brand" href="" translate>APP_NAME</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      aria-controls="navbar-menu"
-      aria-label="Toggle navigation"
-      (click)="toggleMenu()"
-      [attr.aria-expanded]="!menuHidden"
-    >
-      <span class="navbar-toggler-icon"></span>
+    <span class="title">{{ title }}</span>
+  </div>
+  <div fxHide.lt-md>
+    <a class="brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
+  </div>
+  <span fxFlex></span>
+  <button mat-icon-button [matMenuTriggerFor]="languageMenu">
+    <i class="fas fa-globe-asia"></i>
+  </button>
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)">
+      {{ language }}
     </button>
-    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
-      <div class="navbar-nav ml-auto">
-        <div class="nav-item" display="dynamic" placement="bottom-right">
-          <a class="nav-item nav-link text-uppercase" routerLink="/add" routerLinkActive="active">
-            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g class="style-scope yt-icon">
-              <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z" class="style-scope yt-icon"></path>
-            </g></svg>
-            <span translate>Upload</span>
-          </a>
-        </div>
-        <div class="nav-item" display="dynamic" placement="bottom-right">
-          <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
-            <i class="fas fa-question-circle"></i>
-            <span translate>About</span>
-          </a>
-        </div>
-        <div class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
-          <a id="language-dropdown" class="nav-link" ngbDropdownToggle>{{ currentLanguage }}</a>
-          <div ngbDropdownMenu aria-labelledby="language-dropdown">
-            <button class="dropdown-item" *ngFor="let language of languages" (click)="setLanguage(language)">
-              {{ language }}
-            </button>
-          </div>
-        </div>
-        <div class="nav-item" ngbDropdown display="dynamic" placement="bottom-right" [hidden]="!isLogged">
-          <a id="user-dropdown" class="nav-link" ngbDropdownToggle>
-            <i class="fas fa-user-circle"></i>
-          </a>
-          <div ngbDropdownMenu aria-labelledby="user-dropdown">
-            <h6 class="dropdown-header">
-              <span translate>Logged in as</span> <b>{{ username }}</b>
-            </h6>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item" (click)="logout()" translate>Logout</button>
-          </div>
-        </div>
-        <div class="user-action-header" [hidden]="isLogged">
-          <div class="login-box">
-            <a routerLink="/login" class="btn-login">
-              <i class="fas fa-user-circle"></i>
-              Đăng nhập
-            </a>
-          </div>
-        </div>
-      </div>
+  </mat-menu>
+  <div class="btnUser" [hidden]="!isLogged">
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <i class="fas fa-user-circle"></i>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <mat-list>
+        <mat-list-item>
+          <span translate>Logged in as</span>&nbsp;<b>{{ username }}</b>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <button mat-menu-item (click)="logout()" translate>Logout</button>
+    </mat-menu>
+  </div>
+
+  <div class="user-action-header" [hidden]="isLogged">
+    <div class="login-box">
+      <a routerLink="/login" class="btn-login">
+        <i class="fas fa-user-circle"></i>
+        Đăng nhập
+      </a>
     </div>
-  </nav>
-</header>
+  </div>
+</mat-toolbar>

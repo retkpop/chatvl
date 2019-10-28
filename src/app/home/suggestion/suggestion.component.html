@@ -4,13 +4,12 @@
   </div>
   <div class="list-session">
     <div class="row gr-row">
-      <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 item-row"  *ngFor="let suggestion of suggestions">
+      <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 item-row" *ngFor="let suggestion of suggestions">
         <div class="item-chatvl">
           <div class="thumbnail">
-
-            <a routerLink="/video/{{suggestion.posts[0].slug}}" [queryParams]="{ list: suggestion.slug}">
+            <a routerLink="/video/{{ suggestion.posts[0].slug }}" [queryParams]="{ list: suggestion.slug }">
               <div class="img-thumb">
-                <img src="{{suggestion.posts[0].thumbnail}}" alt="thumb" class="img-fluid" />
+                <img src="{{ suggestion.posts[0].thumbnail }}" alt="thumb" class="img-fluid" />
                 <div class="overlay-side-panel">
                   <span class="numb-it">50+</span>
                   <span class="icon-numb"><i class="fas fa-assistive-listening-systems"></i></span>
@@ -24,7 +23,9 @@
           <div class="chatvl-simple-endpoint">
             <div class="title">
               <h3>
-                <a routerLink="/video/{{suggestion.posts[0].slug}}" [queryParams]="{ list: suggestion.slug}">{{suggestion.name}}</a>
+                <a routerLink="/video/{{ suggestion.posts[0].slug }}" [queryParams]="{ list: suggestion.slug }">{{
+                  suggestion.name
+                }}</a>
               </h3>
             </div>
           </div>

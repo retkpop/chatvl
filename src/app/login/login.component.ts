@@ -5,7 +5,7 @@ import { finalize } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Logger, I18nService, AuthenticationService, untilDestroyed } from '@app/core';
-import {FacebookService, InitParams, LoginResponse} from 'ngx-facebook';
+import { FacebookService, InitParams, LoginResponse } from 'ngx-facebook';
 
 const log = new Logger('Login');
 
@@ -66,10 +66,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   loginWithFacebook(): void {
-    this.fb.login()
+    this.fb
+      .login()
       .then((response: LoginResponse) => console.log(response))
       .catch((error: any) => console.error(error));
-
   }
 
   setLanguage(language: string) {

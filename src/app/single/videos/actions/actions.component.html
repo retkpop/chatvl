@@ -12,10 +12,53 @@
         <ng-template #dislikePost>Tôi không thích bài này</ng-template>
         <ng-template #sharePost>Chia sẽ bài viết</ng-template>
         <ng-template #savePost>Lưu bài viết</ng-template>
-        <div class="ac-item like-at" disabled placement="top" [ngbTooltip]="likePost" [openDelay]="400" [closeDelay]="500" (click)="actionPost(Action.LIKE)" tooltipClass="my-tooltip-class" [ngClass]="countUserActionsRes && countUserActionsRes.like > 0? 'checked':''"><i class="fas fa-thumbs-up"></i> {{countAllActionsRes.like}}</div>
-        <div class="ac-item dislike-at" placement="top" [ngbTooltip]="dislikePost" [openDelay]="400" [closeDelay]="500" (click)="actionPost(Action.DISLIKE)" tooltipClass="my-tooltip-class" [ngClass]="countUserActionsRes && countUserActionsRes.dislike > 0? 'checked':''"><i class="fas fa-thumbs-down"></i> {{countAllActionsRes.dislike}} </div>
-        <div class="ac-item share-at" placement="top" [ngbTooltip]="sharePost" [openDelay]="400" [closeDelay]="500" tooltipClass="my-tooltip-class"><i class="fas fa-share"></i> Chia sẽ</div>
-        <div class="ac-item save-at" placement="top" [ngbTooltip]="savePost" [openDelay]="400" [closeDelay]="500" (click)="actionPost(Action.SAVE)" tooltipClass="my-tooltip-class" [ngClass]="countUserActionsRes && countUserActionsRes.save > 0? 'checked':''"><i class="far fa-bookmark"></i> Lưu</div>
+        <div
+          class="ac-item like-at"
+          disabled
+          placement="top"
+          [ngbTooltip]="likePost"
+          [openDelay]="400"
+          [closeDelay]="500"
+          (click)="actionPost(Action.LIKE)"
+          tooltipClass="my-tooltip-class"
+          [ngClass]="countUserActionsRes && countUserActionsRes.like > 0 ? 'checked' : ''"
+        >
+          <i class="fas fa-thumbs-up"></i> {{ countAllActionsRes.like }}
+        </div>
+        <div
+          class="ac-item dislike-at"
+          placement="top"
+          [ngbTooltip]="dislikePost"
+          [openDelay]="400"
+          [closeDelay]="500"
+          (click)="actionPost(Action.DISLIKE)"
+          tooltipClass="my-tooltip-class"
+          [ngClass]="countUserActionsRes && countUserActionsRes.dislike > 0 ? 'checked' : ''"
+        >
+          <i class="fas fa-thumbs-down"></i> {{ countAllActionsRes.dislike }}
+        </div>
+        <div
+          class="ac-item share-at"
+          placement="top"
+          [ngbTooltip]="sharePost"
+          [openDelay]="400"
+          [closeDelay]="500"
+          tooltipClass="my-tooltip-class"
+        >
+          <i class="fas fa-share"></i> Chia sẽ
+        </div>
+        <div
+          class="ac-item save-at"
+          placement="top"
+          [ngbTooltip]="savePost"
+          [openDelay]="400"
+          [closeDelay]="500"
+          (click)="actionPost(Action.SAVE)"
+          tooltipClass="my-tooltip-class"
+          [ngClass]="countUserActionsRes && countUserActionsRes.save > 0 ? 'checked' : ''"
+        >
+          <i class="far fa-bookmark"></i> Lưu
+        </div>
       </div>
     </div>
   </div>

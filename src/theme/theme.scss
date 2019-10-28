@@ -7,7 +7,9 @@
 }
 body {
   font-size: 14px;
+  margin: 0;
   background: #f9f9f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .mg-t-5 {
   margin-top: 5px;
@@ -135,7 +137,12 @@ ngx-input-tag {
     border-top-color: rgba(103, 103, 103, 0.88) !important;
   }
 }
-.pre {white-space: pre}
+.pre {
+  white-space: pre;
+}
+.img-fluid {
+  max-width: 100%;
+}
 @keyframes loading {
   0% {
     transform: rotate(0deg);

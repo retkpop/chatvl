@@ -1,10 +1,4 @@
 .sidebar {
-  position: fixed;
-  left: 0;
-  top: 52px;
-  background: #fff;
-  height: 100%;
-  width: 240px;
   .listMenu {
     margin-top: 10px;
     .item-menu {
@@ -41,7 +35,7 @@
         padding: 8px 24px;
         font-size: 14px;
         font-weight: 500;
-        letter-spacing: .007px;
+        letter-spacing: 0.007px;
         text-transform: uppercase;
       }
     }

@@ -1,5 +1,5 @@
 <div class="homePage">
-  <app-sidebar></app-sidebar>
+<!--  <app-sidebar></app-sidebar>-->
   <div class="mainPage">
     <div class="container">
       <div class="bannerHome">
@@ -17,7 +17,6 @@
               <app-loader [isLoading]="isLoading"></app-loader>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -28,7 +27,11 @@
           </div>
           <div class="list-session">
             <div class="gr-row">
-              <owl-carousel [options]="{items: 6, dots: false, navigation: false}" [items]="postVieweds" [carouselClasses]="['owl-theme', 'sliderViewed', 'sliding']">
+              <owl-carousel
+                [options]="{ items: 6, dots: false, navigation: false }"
+                [items]="postVieweds"
+                [carouselClasses]="['owl-theme', 'sliderViewed', 'sliding']"
+              >
                 <div class="item item-row" *ngFor="let postViewed of postVieweds; let i = index">
                   <div class="item-chatvl">
                     <div class="thumbnail">
@@ -41,7 +44,7 @@
                     <div class="chatvl-simple-endpoint">
                       <div class="title">
                         <h3>
-                          <a routerLink="/video/{{ postViewed.slug }}">{{postViewed.title}}</a>
+                          <a routerLink="/video/{{ postViewed.slug }}">{{ postViewed.title }}</a>
                         </h3>
                       </div>
                     </div>
@@ -49,8 +52,6 @@
                 </div>
               </owl-carousel>
             </div>
-
-
           </div>
         </div>
 
