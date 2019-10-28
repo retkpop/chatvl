@@ -1,0 +1,149 @@
+/*
+ * Global application theme.
+ * Framework overrides and customization goes here.
+ */
+.all-main-page {
+  margin-top: 53px;
+}
+body {
+  font-size: 14px;
+  background: #f9f9f9;
+}
+.mg-t-5 {
+  margin-top: 5px;
+}
+.mg-t-10 {
+  margin-top: 10px;
+}
+.no-mg-b {
+  margin-bottom: 0;
+}
+.mg-b-5 {
+  margin-bottom: 5px;
+}
+.mg-b-10 {
+  margin-bottom: 10px;
+}
+input.form-control {
+  font-size: 13px;
+  border-radius: 2px;
+}
+.sm-loading-after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  animation: loading linear 1s infinite;
+  -webkit-animation: loading linear 1s infinite;
+}
+input.ng-dirty.ng-invalid {
+  border: 1px solid #dc3545;
+}
+button.ngx-input-tag__btn {
+  display: none !important;
+  opacity: 0;
+}
+.modalPlayer {
+  .modal-body {
+    iframe {
+      width: 100% !important;
+      height: 431px !important;
+    }
+  }
+}
+.ngx-input-tag {
+  padding: 5px !important;
+  padding-bottom: 0 !important;
+  font-size: 13px !important;
+}
+.ngx-input-tag__input {
+  min-height: auto !important;
+  font-size: 13px !important;
+}
+.ngx-input-tag__tag {
+  height: auto !important;
+  line-height: normal !important;
+  font-size: 13px;
+  color: #666;
+  background: #eeeff1;
+  border: none;
+  margin-bottom: 5px;
+  button {
+    outline: none;
+    box-shadow: none;
+    color: #fff !important;
+    font-size: 10px;
+  }
+}
+ngx-input-tag {
+  margin-bottom: 0 !important;
+}
+.select2-container .select2-selection--single {
+  height: 33.5px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 13px;
+  padding: 2px 15px;
+}
+.select2-container--default .select2-selection--single {
+  border: 1px solid #ced4d9 !important;
+  border-radius: 2px !important;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  box-shadow: none;
+  outline: none;
+  border: 1px solid #dbdbdb !important;
+}
+.select2-dropdown {
+  border: 1px solid #dbdbdb !important;
+}
+.statistical {
+  .view-count {
+    &:after {
+      content: "•";
+      margin: 0 4px;
+    }
+  }
+}
+.btnLoginFacebook {
+  background: #4267b2;
+}
+.login-box {
+  .btn-login {
+    color: #065fd4 !important;
+    border: 1px solid;
+    display: inline-block;
+    padding: 7px 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-radius: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 15px 0;
+    cursor: pointer;
+  }
+}
+.my-tooltip-class {
+  .tooltip-inner {
+    background-color: rgba(103, 103, 103, 0.88) !important;
+    font-weight: 300 !important;
+    font-size: 12px !important;
+  }
+  .arrow::before {
+    border-top-color: rgba(103, 103, 103, 0.88) !important;
+  }
+}
+.pre {white-space: pre}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(190deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

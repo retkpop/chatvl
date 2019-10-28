@@ -1,0 +1,114 @@
+<div class="singlePost">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="mainSingle">
+          <div *ngIf="postMapping.idVideo" class="iframeBody">
+            <div class="iframe-video">
+              <div id="player"></div>
+              <youtube-player
+                [videoId]="postMapping.idVideo"
+                width="100%"
+                height="610px"
+                (ready)="savePlayer($event)"
+                (change)="onStateChange($event)"
+              ></youtube-player>
+            </div>
+            <app-toolbar></app-toolbar>
+            <div class="infoVideo">
+              <div class="hash-tag">
+                <div class="list-hashtag">
+                  <span class="item-hashtag">#TK</span>
+                  <span class="item-hashtag">#Đại bàng</span>
+                  <span class="item-hashtag">#ChatVL</span>
+                </div>
+              </div>
+              <div class="title-post">
+                <h1>{{postMapping.title}}</h1>
+              </div>
+              <app-actions [parentData]="postMapping.id"></app-actions>
+              <div class="cvl-detail">
+                <div class="avatar-author">
+                  <img src="{{postMapping.user.imageUrl}}" alt="{{postMapping.user.lastName}} {{postMapping.user.firstName}}" class="img-fluid">
+                </div>
+                <div class="description">
+                  <div class="cvl-author">
+                    <div class="name-author">{{postMapping.user.lastName}} {{postMapping.user.firstName}}</div>
+                    <div class="subscribe">199 người theo dõi</div>
+                    <button class="subscribe-btn" (click)="subscribeUser()" [disabled]="isLoadingSubscribe" [ngClass]="this.subscribeRes? this.subscribeRes.status: ''">
+                      <i class="fas fa-cog fa-spin" [hidden]="!isLoadingSubscribe"></i>
+                      <span translate="{{this.subscribeRes? this.subscribeRes.status: 'SUBSCRIBE' | translate}}"></span>
+                    </button>
+                  </div>
+                  <div class="content" [ngClass]="showAll === 'NO_SHOW_ALL' ? 'showAll' : ''">
+                    <div class="pre" [innerHTML]="postMapping.description"></div>
+                  </div>
+                  <div class="view-all" (click)="viewAll()">{{showAll | translate}}</div>
+                </div>
+                <div class="cvl-social-comment">
+                  <fb-comments></fb-comments>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="sidebar">
+          <div class="form-group" [hidden]="!listPostCat">
+            <div class="cvl-heading">
+              <div class="title-hd">Tiếp theo</div>
+              <div class="auto-btn">
+                Tự động phát
+                <span>On</span>
+              </div>
+            </div>
+            <div class="list-suggestion" *ngIf="suggestions">
+              <div class="name-suggestion">
+                {{suggestions.name}}
+              </div>
+              <div class="video-sugges">
+                <div class="list-post">
+                  <div class="item-post" *ngFor="let video of suggestions.posts" (click)="redirectPage(video.slug, suggestions.slug)" [ngClass]="video.slug === postMapping.slug? 'playing': ''">
+                    <div class="thumbnail">
+                      <img
+                        src="{{video.thumbnail}}"
+                        alt="{{video.title}}">
+                    </div>
+                    <div class="cvl-info">
+                      <div class="cvl-title">
+                        <h3>{{video.title}}</h3>
+                      </div>
+                      <div class="cvl-author">{{video.user.lastName}} {{video.user.firstName}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-post">
+              <div class="item-post" *ngFor="let post of listPostCat" (click)="redirectPage(post.slug)">
+                <div class="thumbnail">
+                  <img
+                    src="{{post.thumbnail}}"
+                    alt="{{post.title}}">
+                </div>
+                <div class="cvl-info">
+                  <div class="cvl-title">
+                    <h3>{{post.title}}</h3>
+                  </div>
+                  <div class="cvl-author">{{post.user.lastName}} {{post.user.firstName}}</div>
+                  <div class="count-view">3009 lượt xem</div>
+                  <div class="tag-status">
+                    <span class="tagName">Mới</span>
+                    <span class="tagName offer">{{post.createdDate | date: 'dd/MM/yyyy HH:mm'}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

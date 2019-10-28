@@ -1,0 +1,96 @@
+<div class="homePage">
+  <app-sidebar></app-sidebar>
+  <div class="mainPage">
+    <div class="container">
+      <div class="bannerHome">
+        <img class="img-banner" src="assets/images/banner-home.jpg" alt="angular logo" />
+        <div class="nameSite text-center">
+          <h1>
+            <span class="appName" translate>APP_NAME</span>
+          </h1>
+          <div class="description" translate>DescriptionSite</div>
+          <div class="loadingBanner">
+            <div class="white-loading">
+              <app-loader [isLoading]="isLoading"></app-loader>
+            </div>
+            <div class="black-loading">
+              <app-loader [isLoading]="isLoading"></app-loader>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="group-ct">
+        <div class="chatvl-session-item" [hidden]="!postVieweds">
+          <div class="heading-item">
+            <h2>Xem gần đây</h2>
+          </div>
+          <div class="list-session">
+            <div class="gr-row">
+              <owl-carousel [options]="{items: 6, dots: false, navigation: false}" [items]="postVieweds" [carouselClasses]="['owl-theme', 'sliderViewed', 'sliding']">
+                <div class="item item-row" *ngFor="let postViewed of postVieweds; let i = index">
+                  <div class="item-chatvl">
+                    <div class="thumbnail">
+                      <a routerLink="/video/{{ postViewed.slug }}">
+                        <div class="img-thumb">
+                          <img [src]="postViewed.thumbnail" [alt]="postViewed.title" class="img-fluid" />
+                        </div>
+                      </a>
+                    </div>
+                    <div class="chatvl-simple-endpoint">
+                      <div class="title">
+                        <h3>
+                          <a routerLink="/video/{{ postViewed.slug }}">{{postViewed.title}}</a>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </owl-carousel>
+            </div>
+
+
+          </div>
+        </div>
+
+        <app-suggestion></app-suggestion>
+
+        <div class="chatvl-session-item" [hidden]="!postNews">
+          <div class="heading-item">
+            <h2>Mới nhất</h2>
+          </div>
+          <div class="list-session">
+            <div class="row gr-row">
+              <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 item-row" *ngFor="let post of postNews">
+                <div class="item-chatvl">
+                  <div class="thumbnail">
+                    <a routerLink="/video/{{ post.slug }}">
+                      <div class="img-thumb">
+                        <img src="{{ post.thumbnail }}" alt="{{ post.title }}" class="img-fluid" />
+                      </div>
+                    </a>
+                  </div>
+                  <div class="chatvl-simple-endpoint">
+                    <div class="title">
+                      <h3>
+                        <a routerLink="/video/{{ post.slug }}">{{ post.title }}</a>
+                      </h3>
+                    </div>
+                    <div class="description">
+                      <div class="tk-author">{{ post.user.lastName }} {{ post.user.firstName }}</div>
+                      <div class="tk-info-post statistical">
+                        <span class="view-count tk-colum-inf">1,7Tr lượt xem</span>
+                        <span class="date-post tk-colum-inf">2 tháng trước</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
