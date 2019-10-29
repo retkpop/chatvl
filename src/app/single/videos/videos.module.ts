@@ -6,7 +6,7 @@ import { VideosComponent } from './videos.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { TooltipModule } from 'ngx-bootstrap';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModalModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import { FacebookModule } from 'ngx-facebook';
 import { AdminModule } from '@app/admin/admin.module';
 import { ActionsComponent } from './actions/actions.component';
@@ -21,6 +21,7 @@ import { ActionsComponent } from './actions/actions.component';
     TooltipModule,
     NgbTooltipModule,
     FacebookModule,
+    NgbModalModule,
     AdminModule
   ]
 })

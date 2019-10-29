@@ -53,6 +53,10 @@ export class PostService {
     // tslint:disable-next-line:max-line-length
     return this.http.get<PostResponse[]>(`${environment.apiUrl}/api/posts/get-video-popular/${page}/${size}`);
   }
+  getVideoSubscribes(page: number, size: number) {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<PostResponse[]>(`${environment.apiUrl}/api/posts/get-video-subscribes/${page}/${size}`);
+  }
 
   actionPost(action: ActionsDTO) {
     return this.http.post<CountActionsRes>(`${environment.apiUrl}/api/actions`, action, { withCredentials: true });

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { SuggestionsService } from '@app/core/service/suggestions.service';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Options } from 'select2';
-import { VideosComponent } from '@app/single/videos/videos.component';
-import { CredentialsService } from '@app/core';
+import {Component, OnInit} from '@angular/core';
+import {SuggestionsService} from '@app/core/service/suggestions.service';
+import {FormBuilder} from '@angular/forms';
+import {VideosComponent} from '@app/single/videos/videos.component';
+import {CredentialsService} from '@app/core';
+import {MatDialog} from '@angular/material';
+import {DialogComponent} from '@app/admin/dialog/dialog.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,51 +12,27 @@ import { CredentialsService } from '@app/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  addSuggestion!: FormGroup;
-  options: Options;
-  isLoading = false;
-  suggestionss: any = Array<SuggestionsDTO>();
   active = false;
   constructor(
     private suggestionsService: SuggestionsService,
     private formBuilder: FormBuilder,
     private videosComponent: VideosComponent,
-    private credentialsService: CredentialsService
+    private credentialsService: CredentialsService,
+    public dialog: MatDialog
   ) {
     if (this.credentialsService.authoritiesConstantsAdmin() === true) {
       this.active = true;
     }
-    this.createForm();
   }
 
   ngOnInit() {
-    this.getAllSuggestionUsingByGet();
   }
-  onClickSubmit() {
-    this.isLoading = true;
-    this.updateAddSuggestionsUsingByGet();
-  }
-  getAllSuggestionUsingByGet() {
-    return this.suggestionsService.getVideoBySlugUsingByGet().subscribe(suggestions => {
-      this.suggestionss = suggestions;
-      this.options = {
-        multiple: true,
-        tags: true
-      };
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '450px',
+      data: {videoId: this.videosComponent.postMapping.id}
     });
   }
-  updateAddSuggestionsUsingByGet() {
-    this.addSuggestion.patchValue({
-      posts_id: this.videosComponent.postMapping.id
-    });
-    return this.suggestionsService.updateAddSuggestionsUsingByGet(this.addSuggestion.value).subscribe(addSuggestion => {
-      this.isLoading = false;
-    });
-  }
-  private createForm() {
-    this.addSuggestion = this.formBuilder.group({
-      posts_id: ['', Validators.compose(null)],
-      suggestionss: ['', Validators.required]
-    });
-  }
+
 }

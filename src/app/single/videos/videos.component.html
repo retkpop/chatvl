@@ -30,7 +30,7 @@
               <div class="cvl-detail">
                 <div class="avatar-author">
                   <img
-                    src="{{ postMapping.user.imageUrl }}"
+                    [src]="postMapping.user.imageUrl? postMapping.user.imageUrl: 'assets/images/chatvl.jpg'"
                     alt="{{ postMapping.user.lastName }} {{ postMapping.user.firstName }}"
                     class="img-fluid"
                   />

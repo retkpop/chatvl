@@ -1,0 +1,22 @@
+<div class="modal-body">
+  <h3 mat-dialog-title>Thêm Video vào danh sách đề xuất</h3>
+  <form (ngSubmit)="onClickSubmit()" [formGroup]="addSuggestion" novalidate>
+    <div class="listSugges form-group">
+
+      <mat-form-field fxFill>
+        <mat-label>Toppings</mat-label>
+        <mat-select formControlName="suggestionss" multiple fxFill>
+          <mat-option *ngFor="let topping of suggestionss" [value]="topping.id">{{topping.text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <div class="btnSubmit">
+      <button mat-raised-button color="primary">
+        <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+        <span>&nbsp; Thêm &nbsp;</span>
+      </button>
+      &nbsp;<button mat-raised-button (click)="onNoClick()">Close</button>
+    </div>
+  </form>
+</div>
