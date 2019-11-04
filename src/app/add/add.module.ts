@@ -11,11 +11,17 @@ import { NgxInputTagModule } from '@ngx-lite/input-tag';
 import { ModalModule } from 'ngx-bootstrap';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { NgSelect2Module } from 'ng-select2';
+import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { PopupPlayComponent } from './popup-play/popup-play.component';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatInputModule,
     AddRoutingModule,
     BrowserModule,
     ReactiveFormsModule,
@@ -23,8 +29,10 @@ import { NgSelect2Module } from 'ng-select2';
     ModalModule,
     NgxYoutubePlayerModule,
     NgSelect2Module,
-    NgxInputTagModule.forRoot()
+    NgxInputTagModule.forRoot(),
+    MatFormFieldModule
   ],
-  declarations: [AddComponent]
+  declarations: [AddComponent, PopupPlayComponent],
+  entryComponents: [PopupPlayComponent]
 })
 export class AddModule {}

@@ -15,7 +15,7 @@
     </div>
     <div class="item-menu" *ngIf="categories">
       <ul>
-        <li *ngFor="let category of categories">
+        <li *ngFor="let category of categories" [ngClass]="currentPage && currentPage==category.slug? 'active' : ''">
           <a routerLink="/cat/{{category.slug}}">{{category.name}}</a>
         </li>
       </ul>
@@ -37,8 +37,8 @@
         <a routerLink="/user/{{user.login}}">
           <span class="avatar">
             <img
-              src="https://seeklogo.net/wp-content/uploads/2012/12/troll-face-logo-vector.png"
-              alt=""
+              [src]="user.imageUrl? user.imageUrl : 'assets/images/chatvl.jpg'"
+              alt="{{user.lastName + ' ' + user.firstName}}"
               class="img-fluid"
             />
           </span>

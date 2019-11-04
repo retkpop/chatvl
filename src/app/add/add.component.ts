@@ -7,6 +7,9 @@ import { PostService } from '@app/core/service/post.service';
 import { urlValidator } from '@app/core/_helpers/validation';
 import { PostMapping } from '@app/core/_helpers/postMapping';
 import { Videos } from '@app/core/models/Videos';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {PopupPlayComponent} from '@app/add/popup-play/popup-play.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add',
@@ -34,7 +37,10 @@ export class AddComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private postService: PostService
+    private postService: PostService,
+    private _snackBar: MatSnackBar,
+    private translate: TranslateService,
+    public dialog: MatDialog
   ) {
     this.createForm();
   }
@@ -72,11 +78,19 @@ export class AddComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           window.scrollTo(0, 100);
           this.error = error1.error.errorKey;
-          console.log(error1.error.errorKey);
+          this._snackBar.open(this.translate.instant(this.error), 'close', {
+            duration: 2000,
+          });
         }
       );
   }
-
+  openDialog(videoId: string) {
+    console.log(videoId);
+    const dialogRef = this.dialog.open(PopupPlayComponent, {
+      width: '600px',
+      data: {videoId: videoId}
+    });
+  }
   onReset() {
     this.submitted = false;
     this.addForm.reset();

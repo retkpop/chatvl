@@ -109,7 +109,7 @@
                     <h3>{{ post.title }}</h3>
                   </div>
                   <div class="cvl-author">{{ post.user.lastName }} {{ post.user.firstName }}</div>
-                  <div class="count-view">3009 lượt xem</div>
+                  <div class="count-view">{{post.views | number}} lượt xem</div>
                   <div class="tag-status">
                     <span class="tagName">Mới</span>
                     <span class="tagName offer">{{ post.createdDate | date: 'dd/MM/yyyy HH:mm' }}</span>

@@ -1,0 +1,38 @@
+<div class="category" *ngIf="category">
+  <div class="container">
+    <div class="chatvl-session-item">
+      <div class="heading-item">
+        <h1>{{category.name}}</h1>
+      </div>
+      <div class="list-session" [hidden]="!postNews">
+        <div class="row gr-row">
+          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 item-row" *ngFor="let post of postNews">
+            <div class="item-chatvl">
+              <div class="thumbnail">
+                <a routerLink="/video/{{ post.slug }}">
+                  <div class="img-thumb">
+                    <img src="{{ post.thumbnail }}" alt="{{ post.title }}" class="img-fluid" />
+                  </div>
+                </a>
+              </div>
+              <div class="chatvl-simple-endpoint">
+                <div class="title">
+                  <h3>
+                    <a routerLink="/video/{{ post.slug }}">{{ post.title }}</a>
+                  </h3>
+                </div>
+                <div class="description">
+                  <div class="tk-author">{{ post.user.lastName }} {{ post.user.firstName }}</div>
+                  <div class="tk-info-post statistical">
+                    <span class="view-count tk-colum-inf">{{post.views | number}} lượt xem</span>
+                    <span class="date-post tk-colum-inf">{{post.createdDate | date: 'dd/MM/yyyy HH:mm'}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

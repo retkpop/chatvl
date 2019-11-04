@@ -26,6 +26,7 @@ import {MaterialModule} from '@app/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserModule} from '@app/user/user.module';
 import {RegisterModule} from '@app/user/register/register.module';
+import {CategoryModule} from '@app/category/category.module';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import {RegisterModule} from '@app/user/register/register.module';
     UserModule,
     AddModule,
     LoginModule,
+    CategoryModule,
     RegisterModule,
     ModalModule.forRoot(),
     NgxYoutubePlayerModule.forRoot(),

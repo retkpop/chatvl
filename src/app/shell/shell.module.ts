@@ -10,9 +10,10 @@ import {HeaderComponent} from './header/header.component';
 import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 import {SidebarComponent} from '@app/shell/sidebar/sidebar.component';
 import {CategoriesResourceService} from '@app/core/api-client';
+import {MatIconModule} from '@angular/material';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, FlexLayoutModule, MaterialModule, RouterModule, NgbCollapseModule],
+  imports: [CommonModule, TranslateModule, FlexLayoutModule, MaterialModule, RouterModule, NgbCollapseModule, MatIconModule],
   declarations: [HeaderComponent, ShellComponent, SidebarComponent],
   providers: [CategoriesResourceService]
 })
