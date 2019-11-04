@@ -6,11 +6,13 @@
   "Home": "Home",
   "Logged in as": "Logged in as",
   "Login": "Login",
+  "Register": "Register",
   "Logout": "Logout",
   "Password": "Password",
   "Password is required": "Password is required",
   "Username": "Username",
   "Username is required": "Username is required",
+  "FieldRequired": "Please enter all required information",
   "Username or password incorrect.": "Username or password incorrect.",
   "Remember me": "Remember me",
   "Version": "Version",
@@ -22,5 +24,9 @@
   "NO_SHOW_ALL": "Hide less",
   "SUBSCRIBE": "Subscribe",
   "SUBSCRIBED": "Unsubscribe",
-  "UNSUBSCRIBED": "Subscribe"
+  "UNSUBSCRIBED": "Subscribe",
+  "Lastname": "Last name",
+  "Firstname": "First name",
+  "Email": "Email",
+  "PasswordConfirm": "Password confirm"
 }

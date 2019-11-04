@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
+    pathMatch: 'full',
     children: [
       { path: 'about', component: AboutComponent, data: { title: extract('About') } },
       { path: 'add', component: AddComponent, data: { title: extract('Add') } }

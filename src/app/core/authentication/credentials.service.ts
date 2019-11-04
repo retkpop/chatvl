@@ -43,6 +43,12 @@ export class CredentialsService {
     return !!this.credentials;
   }
 
+  getNameLogged(): string {
+    if (this._credentials != null) {
+      return this._credentials.username;
+    }
+    return null;
+  }
   /**
    * Gets the user credentials.
    * @return The user credentials or null if the user is not authenticated.

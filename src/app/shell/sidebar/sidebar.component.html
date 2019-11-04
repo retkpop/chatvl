@@ -3,7 +3,7 @@
     <div class="item-menu">
       <ul>
         <li class="active">
-          <a href=""><i class="fa fa-home"></i> <span translate>Home</span></a>
+          <a routerLink="/"><i class="fa fa-home"></i> <span translate>Home</span></a>
         </li>
         <li>
           <a routerLink="/popular"><i class="fab fa-affiliatetheme"></i> <span>Thịnh hành</span></a>
@@ -13,24 +13,15 @@
         </li>
       </ul>
     </div>
-    <div class="item-menu">
+    <div class="item-menu" *ngIf="categories">
       <ul>
-        <li>
-          <a href="">Thư viện</a>
-        </li>
-        <li>
-          <a href="">Lịch sử</a>
-        </li>
-        <li>
-          <a href="">Xem sau</a>
-        </li>
-        <li>
-          <a href="">Video đã thích</a>
+        <li *ngFor="let category of categories">
+          <a routerLink="/cat/{{category.slug}}">{{category.name}}</a>
         </li>
       </ul>
     </div>
   </div>
-  <div class="request-login">
+  <div class="request-login" *ngIf="!userLogged">
     <div class="info-ms">Hãy đăng nhập để thích video, bình luận và đăng ký theo dõi thành viên.</div>
     <div class="login-box">
       <a routerLink="/login" class="btn-login">
@@ -39,11 +30,11 @@
       </a>
     </div>
   </div>
-  <div class="subscription-channel">
+  <div class="subscription-channel" *ngIf="userSubscribes">
     <div class="name-group"><h3>Kênh đăng ký</h3></div>
     <div class="list-channel">
-      <div class="item-channel">
-        <a href="">
+      <div class="item-channel" *ngFor="let user of userSubscribes">
+        <a routerLink="/user/{{user.login}}">
           <span class="avatar">
             <img
               src="https://seeklogo.net/wp-content/uploads/2012/12/troll-face-logo-vector.png"
@@ -51,43 +42,7 @@
               class="img-fluid"
             />
           </span>
-          <span class="name">Tâm Kiều</span>
-        </a>
-      </div>
-      <div class="item-channel">
-        <a href="">
-          <span class="avatar">
-            <img
-              src="https://seeklogo.net/wp-content/uploads/2012/12/troll-face-logo-vector.png"
-              alt=""
-              class="img-fluid"
-            />
-          </span>
-          <span class="name">Tâm Kiều</span>
-        </a>
-      </div>
-      <div class="item-channel">
-        <a href="">
-          <span class="avatar">
-            <img
-              src="https://seeklogo.net/wp-content/uploads/2012/12/troll-face-logo-vector.png"
-              alt=""
-              class="img-fluid"
-            />
-          </span>
-          <span class="name">Tâm Kiều</span>
-        </a>
-      </div>
-      <div class="item-channel">
-        <a href="">
-          <span class="avatar">
-            <img
-              src="https://seeklogo.net/wp-content/uploads/2012/12/troll-face-logo-vector.png"
-              alt=""
-              class="img-fluid"
-            />
-          </span>
-          <span class="name">Tâm Kiều</span>
+          <span class="name">{{user.lastName + ' ' + user.firstName}}</span>
         </a>
       </div>
     </div>

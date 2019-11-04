@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
       );
   }
   getVideoViewed() {
-    const viewed = sessionStorage.getItem('viewed');
+    const viewed = localStorage.getItem('viewed');
     if (viewed) {
       const viewedParse = JSON.parse(viewed);
       this.postService

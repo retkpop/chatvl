@@ -28,7 +28,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PostsResourceService {
 
-    protected basePath = 'https://192.168.1.12:9090';
+    protected basePath = 'http://localhost:9090';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -449,6 +449,57 @@ export class PostsResourceService {
         ];
 
         return this.httpClient.get<Posts>(`${this.basePath}/api/posts/get-video-by-slug/${encodeURIComponent(String(slug))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getVideoByUserName
+     * 
+     * @param page page
+     * @param size size
+     * @param username username
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getVideoByUserNameUsingGET(page: number, size: number, username: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Posts>>;
+    public getVideoByUserNameUsingGET(page: number, size: number, username: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Posts>>>;
+    public getVideoByUserNameUsingGET(page: number, size: number, username: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Posts>>>;
+    public getVideoByUserNameUsingGET(page: number, size: number, username: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (page === null || page === undefined) {
+            throw new Error('Required parameter page was null or undefined when calling getVideoByUserNameUsingGET.');
+        }
+
+        if (size === null || size === undefined) {
+            throw new Error('Required parameter size was null or undefined when calling getVideoByUserNameUsingGET.');
+        }
+
+        if (username === null || username === undefined) {
+            throw new Error('Required parameter username was null or undefined when calling getVideoByUserNameUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Array<Posts>>(`${this.basePath}/api/posts/get-video-by-user/${encodeURIComponent(String(username))}/${encodeURIComponent(String(page))}/${encodeURIComponent(String(size))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

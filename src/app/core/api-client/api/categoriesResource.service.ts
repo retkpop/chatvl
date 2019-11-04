@@ -29,7 +29,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class CategoriesResourceService {
 
-    protected basePath = 'https://192.168.1.12:9090';
+    protected basePath = 'http://localhost:9090';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -208,7 +208,7 @@ export class CategoriesResourceService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<Categories>>(`${this.basePath}/api/categories`,
+        return this.httpClient.get<Array<Categories>>(`${this.basePath}/api/get-all-categories`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

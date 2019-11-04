@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class SuggestionsResourceService {
 
-    protected basePath = 'https://192.168.1.12:9090';
+    protected basePath = 'http://localhost:9090';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

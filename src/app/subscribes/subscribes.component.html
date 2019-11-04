@@ -24,8 +24,8 @@
                 <div class="description">
                   <div class="tk-author">{{ post.user.lastName }} {{ post.user.firstName }}</div>
                   <div class="tk-info-post statistical">
-                    <span class="view-count tk-colum-inf">1,7Tr lượt xem</span>
-                    <span class="date-post tk-colum-inf">2 tháng trước</span>
+                    <span class="view-count tk-colum-inf">{{post.views | number}} lượt xem</span>
+                    <span class="date-post tk-colum-inf">{{post.createdDate | date: 'dd/MM/yyyy HH:mm'}}</span>
                   </div>
                 </div>
               </div>

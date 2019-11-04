@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Categories, CategoriesResourceService, User, UserResourceService} from '@app/core/api-client';
+import {CredentialsService} from '@app/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  constructor() {}
+  categories: Categories[];
+  userLogged: boolean;
+  userSubscribes: User[];
 
-  ngOnInit() {}
+  constructor(
+    private categoriesResourceService: CategoriesResourceService,
+    private credentialsService: CredentialsService,
+    private userResourceService: UserResourceService
+  ) {}
+
+  ngOnInit() {
+    this.categoriesResourceService.getAllCategoriesUsingGET().subscribe((categories: Categories[]) => {
+      this.categories = categories;
+    });
+    if(this.credentialsService.isAuthenticated()) {
+      this.userResourceService.getAllUserSubscribedUsingGET().subscribe((users: User[]) => {
+        this.userSubscribes = users;
+      })
+    }
+    this.userLogged = this.credentialsService.isAuthenticated();
+  }
 }

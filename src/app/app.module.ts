@@ -24,6 +24,8 @@ import { PopularModule } from '@app/popular/popular.module';
 import { SubscribesModule } from '@app/subscribes/subscribes.module';
 import {MaterialModule} from '@app/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {UserModule} from '@app/user/user.module';
+import {RegisterModule} from '@app/user/register/register.module';
 
 @NgModule({
   imports: [
@@ -43,8 +45,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     VideosModule,
     PopularModule,
     SubscribesModule,
+    UserModule,
     AddModule,
     LoginModule,
+    RegisterModule,
     ModalModule.forRoot(),
     NgxYoutubePlayerModule.forRoot(),
     AppRoutingModule // must be imported as the last module as it contains the fallback route

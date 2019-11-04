@@ -1,0 +1,74 @@
+<div class="profile">
+  <div class="banner-user">
+    <img src="assets/images/banner-user.jpg" alt="Banner User" class="full-width img-fluid" />
+  </div>
+  <div class="heading">
+    <div class="container">
+      <div class="top-heading">
+        <mat-card class="mat-card-user" *ngIf="user">
+          <div class="left-item">
+            <div class="avatar-author">
+              <img src="assets/images/chatvl.jpg" class="img-fluid"/>
+            </div>
+            <div class="info-user">
+              <div class="name-user">
+                <h1>{{user.lastName + ' ' + user.firstName}}</h1>
+              </div>
+              <div class="subscribe-count">{{numberSubscribe | number}} người theo dõi</div>
+            </div>
+          </div>
+          <div class="right-item">
+            <div class="actions" *ngIf="!itMe">
+              <button mat-raised-button color="primary" (click)="subscribeUser()"
+                      [disabled]="isLoadingSubscribe"
+                      [ngClass]="this.subscribeRes ? this.subscribeRes.status : ''">
+                <span
+                  translate="{{ this.subscribeRes ? this.subscribeRes.status : ('SUBSCRIBE' | translate) }}"
+                ></span>
+              </button>
+              <button mat-raised-button color="warn">Report</button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="list-posts">
+    <div class="container">
+      <div class="chatvl-session-item" [hidden]="!posts">
+        <div class="heading-item">
+          <h2>Bài đăng mới nhất</h2>
+        </div>
+        <div class="list-session">
+          <div class="row gr-row">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 item-row" *ngFor="let post of posts">
+              <div class="item-chatvl">
+                <div class="thumbnail">
+                  <a routerLink="/video/{{ post.slug }}">
+                    <div class="img-thumb">
+                      <img src="{{ post.thumbnail }}" alt="{{ post.title }}" class="img-fluid" />
+                    </div>
+                  </a>
+                </div>
+                <div class="chatvl-simple-endpoint">
+                  <div class="title">
+                    <h3>
+                      <a routerLink="/video/{{ post.slug }}">{{ post.title }}</a>
+                    </h3>
+                  </div>
+                  <div class="description">
+                    <div class="tk-author">{{ post.user.lastName }} {{ post.user.firstName }}</div>
+                    <div class="tk-info-post statistical">
+                      <span class="view-count tk-colum-inf">{{ post.views | number}} lượt xem</span>
+                      <span class="date-post tk-colum-inf">{{post.createdDate | date: 'dd/MM/yyyy HH:mm'}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

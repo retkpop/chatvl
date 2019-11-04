@@ -9,6 +9,7 @@ import { SuggestionsService } from '@app/core/service/suggestions.service';
 import { SuggestionsDTO } from '@app/core/models/SuggestionsDTO';
 import { UserService } from '@app/core/service/user.service';
 import { SubscribeRes } from '@app/core/models/SubscribeRes';
+import {CredentialsService} from '@app/core';
 
 @Component({
   selector: 'app-videos',
@@ -36,6 +37,7 @@ export class VideosComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private fb: FacebookService,
     private router: Router,
+    private credentialsService: CredentialsService,
     private suggestionsService: SuggestionsService
   ) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -70,18 +72,20 @@ export class VideosComponent implements OnInit, OnDestroy {
     }
   }
   getSubscribeUserPost(subscribeId: number) {
-    this.userService.getSubscribeUserPost(subscribeId).subscribe(
-      datas => {
-        if (datas.code === 2001) {
-          this.subscribeRes = datas;
-          console.log(this.subscribeRes);
+    if(this.credentialsService.isAuthenticated()) {
+      this.userService.getSubscribeUserPost(subscribeId).subscribe(
+        datas => {
+          if (datas.code === 2001) {
+            this.subscribeRes = datas;
+            console.log(this.subscribeRes);
+          }
+          // TODO Excerption else
+        },
+        error1 => {
+          this.error = error1.error.errorKey;
         }
-        // TODO Excerption else
-      },
-      error1 => {
-        this.error = error1.error.errorKey;
-      }
-    );
+      );
+    }
   }
   subscribeUser() {
     this.isLoadingSubscribe = true;
@@ -118,12 +122,12 @@ export class VideosComponent implements OnInit, OnDestroy {
   }
 
   updateViewed(id: number) {
-    const viewed = sessionStorage.getItem('viewed');
+    const viewed = localStorage.getItem('viewed');
     if (viewed) {
       const viewedParse = JSON.parse(viewed);
       const viewedParseNew = viewedParse.filter((view: any) => view !== id);
       viewedParseNew.unshift(id);
-      sessionStorage.setItem('viewed', JSON.stringify(viewedParseNew));
+      localStorage.setItem('viewed', JSON.stringify(viewedParseNew));
 
       const index = viewedParse.indexOf(id);
       if (index === -1) {
@@ -133,7 +137,7 @@ export class VideosComponent implements OnInit, OnDestroy {
           .subscribe();
       }
     } else {
-      sessionStorage.setItem('viewed', '[' + id + ']');
+      localStorage.setItem('viewed', '[' + id + ']');
       this.postService
         .updateViewPost(id)
         .pipe()

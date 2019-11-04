@@ -8,6 +8,7 @@ export class PostResponse {
   description: string;
   thumbnail: string;
   createdDate: string;
+  views: number;
   items: any;
   user: User;
   hashtags: Array<Hashtag>;

@@ -7,6 +7,7 @@ import { filter, map, switchMap } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
 import { Logger, I18nService, untilDestroyed } from '@app/core';
+import {ConfigurationParameters} from '@app/core/api-client';
 
 const log = new Logger('App');
 
@@ -22,7 +23,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private titleService: Title,
     private translateService: TranslateService,
     private i18nService: I18nService
-  ) {}
+  ) {
+
+  }
 
   ngOnInit() {
     // Setup logger

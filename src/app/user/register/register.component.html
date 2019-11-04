@@ -1,0 +1,78 @@
+
+<div fxFill fxLayout="column" fxLayoutAlign="center center" class="mat-typography">
+  <div class="mainLogin">
+    <div class="heading">
+      <h1 fxLayoutAlign="center" translate>Register</h1>
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem">
+        <h4 class="version">v{{ version }}</h4>
+        <div class="language-selector">
+          <button mat-raised-button color="primary" [matMenuTriggerFor]="languageMenu">
+            {{ currentLanguage }}
+          </button>
+          <mat-menu #languageMenu="matMenu">
+            <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)">
+              {{ language }}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+    <div class="login-container" fxLayout="row" fxLayoutAlign="center">
+      <mat-card class="login-box" fxFill>
+        <form (ngSubmit)="register()" [formGroup]="registerForm" autocomplete="off" novalidate>
+          <div class="login-error" [hidden]="!error || isLoading" translate>
+            Username or password incorrect.
+          </div>
+          <br />
+          <div class="login-fields" fxLayout="column">
+            <mat-form-field [hideRequiredMarker]="true">
+              <input type="text" matInput formControlName="username" [placeholder]="'Username' | translate" required />
+            </mat-form-field>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field [hideRequiredMarker]="true">
+                  <input type="password" matInput formControlName="password" [placeholder]="'Password' | translate" required />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field [hideRequiredMarker]="true">
+                  <input type="password" matInput formControlName="repassword" [placeholder]="'PasswordConfirm' | translate" required />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <mat-form-field [hideRequiredMarker]="true">
+              <input type="text" matInput formControlName="email" [placeholder]="'Email' | translate" required />
+            </mat-form-field>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field [hideRequiredMarker]="true">
+                  <input matInput formControlName="lastName" [placeholder]="'Lastname' | translate" required />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field [hideRequiredMarker]="true">
+                  <input matInput formControlName="firstName" [placeholder]="'Firstname' | translate" required />
+                </mat-form-field>
+              </div>
+            </div>
+
+
+
+            <mat-slide-toggle color="primary" formControlName="remember" translate>Chấp nhận điều khoản sử dụng</mat-slide-toggle>
+            <div class="form-group register-link">
+              Bạn đã có tài khoản? <a routerLink="/login">Đăng nhập</a>
+            </div>
+            <div class="form-group btn-action">
+              <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+                <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
+                <span translate>Register</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

@@ -6,11 +6,13 @@
   "Home": "Accueil",
   "Logged in as": "Connecté en tant que",
   "Login": "Connexion",
+  "Register": "Đăng ký",
   "Logout": "Déconnexion",
   "Password": "Mot de passe",
   "Password is required": "Mot de passe requis",
   "Username": "Identifiant",
   "Username is required": "Identifiant requis",
+  "FieldRequired": "Vui lòng nhập đầy đủ thông tin bắt buộc",
   "Username or password incorrect.": "Identifiant ou mot de passe incorrect.",
   "Remember me": "Rester connecté",
   "Version": "Version",
@@ -22,5 +24,9 @@
   "NO_SHOW_ALL": "Ẩn bớt",
   "SUBSCRIBE": "Theo dõi",
   "SUBSCRIBED": "Hủy theo dõi",
-  "UNSUBSCRIBED": "Theo dõi"
+  "UNSUBSCRIBED": "Theo dõi",
+  "Lastname": "Họ",
+  "Firstname": "Tên đệm và tên",
+  "Email": "Email",
+  "PasswordConfirm": "Nhập lại mật khẩu"
 }

@@ -4,6 +4,7 @@ import { VideosComponent } from '@app/single/videos/videos.component';
 import { PostService } from '@app/core/service/post.service';
 import { CountActionsRes } from '@app/core/models/CountActionsRes';
 import { CredentialsService } from '@app/core';
+import {PostResponse} from '@app/core/models/PostResponse';
 
 @Component({
   selector: 'app-actions',
@@ -11,7 +12,7 @@ import { CredentialsService } from '@app/core';
   styleUrls: ['./actions.component.scss']
 })
 export class ActionsComponent implements OnInit {
-  @Input() parentData: number;
+  @Input() parentData: PostResponse;
   actionsDTO = new ActionsDTO();
   Action = Action;
   countAllActionsRes: CountActionsRes;
@@ -24,7 +25,7 @@ export class ActionsComponent implements OnInit {
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnChanges(changes: SimpleChanges) {
-    this.countAction(changes.parentData.currentValue);
+    this.countAction(changes.parentData.currentValue.id);
     this.videosComponent.getSubscribeUserPost(this.videosComponent.postMapping.user.id);
   }
   ngOnInit() {

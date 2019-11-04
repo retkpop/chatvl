@@ -29,7 +29,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UserResourceService {
 
-    protected basePath = 'https://192.168.1.12:9090';
+    protected basePath = 'http://localhost:9090';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -57,6 +57,47 @@ export class UserResourceService {
         return false;
     }
 
+
+    /**
+     * countNumberSubscribeUser
+     * 
+     * @param userId userId
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public countNumberSubscribeUserUsingGET(userId: number, observe?: 'body', reportProgress?: boolean): Observable<number>;
+    public countNumberSubscribeUserUsingGET(userId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
+    public countNumberSubscribeUserUsingGET(userId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
+    public countNumberSubscribeUserUsingGET(userId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling countNumberSubscribeUserUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<number>(`${this.basePath}/api/users/count-number-subscribe-user/${encodeURIComponent(String(userId))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
 
     /**
      * createUser
@@ -137,6 +178,42 @@ export class UserResourceService {
         ];
 
         return this.httpClient.delete<any>(`${this.basePath}/api/users/${encodeURIComponent(String(login))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getAllUserSubscribed
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getAllUserSubscribedUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Array<User>>;
+    public getAllUserSubscribedUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<User>>>;
+    public getAllUserSubscribedUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<User>>>;
+    public getAllUserSubscribedUsingGET(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Array<User>>(`${this.basePath}/api/users/get-all-user-subscribed`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -254,7 +331,7 @@ export class UserResourceService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<UserDTO>(`${this.basePath}/api/users/${encodeURIComponent(String(login))}`,
+        return this.httpClient.get<UserDTO>(`${this.basePath}/api/users/get-user-by-username/${encodeURIComponent(String(login))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
