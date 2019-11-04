@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Posts, PostsResourceService, SubscribeRes, UserDTO, UserResourceService} from '@app/core/api-client';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CredentialsService} from '@app/core';
+import {PageSiteService} from '@app/shell/page-site.service';
 
 @Component({
   selector: 'app-user',
@@ -23,6 +24,7 @@ export class UserComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private credentialsService: CredentialsService,
+    private pageSiteService: PageSiteService
   ) {
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       if (e instanceof NavigationEnd) {
@@ -93,6 +95,7 @@ export class UserComponent implements OnInit {
       this.user = user;
       this.getSubscribeUserPost(user.id);
       this.countNumberSubscribeUser(user.id);
+      this.pageSiteService.setCurrentPage(user.login);
     })
   }
 }

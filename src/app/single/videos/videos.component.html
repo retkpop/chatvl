@@ -45,7 +45,7 @@
                       [disabled]="isLoadingSubscribe"
                       [ngClass]="this.subscribeRes ? this.subscribeRes.status : ''"
                     >
-                      <i class="fas fa-cog fa-spin" [hidden]="!isLoadingSubscribe"></i>
+                      <i class="fas fa-cog fa-spin" *ngIf="isLoadingSubscribe"></i>
                       <span
                         translate="{{ this.subscribeRes ? this.subscribeRes.status : ('SUBSCRIBE' | translate) }}"
                       ></span>

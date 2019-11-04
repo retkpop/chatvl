@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '@app/core/service/post.service';
 import {PostResponse} from '@app/core/models/PostResponse';
+import {PageSiteService} from '@app/shell/page-site.service';
 
 @Component({
   selector: 'app-subscribes',
@@ -10,7 +11,12 @@ import {PostResponse} from '@app/core/models/PostResponse';
 export class SubscribesComponent implements OnInit {
   postNews: PostResponse[];
 
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private pageSiteService: PageSiteService
+  ) {
+    this.pageSiteService.setCurrentPage('subscribe');
+  }
 
   ngOnInit() {
     this.getVideoSubscribes(0,50)

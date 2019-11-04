@@ -40,28 +40,33 @@
       }
     }
     .list-channel {
-      .item-channel a {
-        padding: 13px 24px;
-        min-width: 0;
-        color: #0d0d0d;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        font-weight: 400;
-        line-height: 21px;
-        display: block;
-        text-decoration: none;
-        &.active,
-        &:hover {
+      .item-channel {
+        &.active {
           background: #f2f2f2;
         }
-        .avatar {
-          width: 24px;
-          height: 24px;
-          display: inline-block;
-          overflow: hidden;
-          border-radius: 100%;
-          float: left;
-          margin-right: 10px;
+        a {
+          padding: 13px 24px;
+          min-width: 0;
+          color: #0d0d0d;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-weight: 400;
+          line-height: 21px;
+          display: block;
+          text-decoration: none;
+          &.active,
+          &:hover {
+            background: #f2f2f2;
+          }
+          .avatar {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 100%;
+            float: left;
+            margin-right: 10px;
+          }
         }
       }
     }

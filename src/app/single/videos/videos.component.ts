@@ -28,7 +28,7 @@ export class VideosComponent implements OnInit, OnDestroy {
   navigationSubscription: any;
   suggestions = SuggestionsDTO;
   subscribeRes: SubscribeRes;
-  isLoadingSubscribe = false;
+  isLoadingSubscribe: boolean;
   error: string | undefined;
 
   constructor(

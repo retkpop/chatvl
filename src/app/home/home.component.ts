@@ -5,6 +5,7 @@ import { PostDTO } from '@app/core/models/PostDTO';
 // @ts-ignore
 import { SuggestionsDTO } from '@app/core/models/SuggestionsDTO';
 import { SuggestionsService } from '@app/core/service/suggestions.service';
+import {PageSiteService} from '@app/shell/page-site.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,12 @@ export class HomeComponent implements OnInit {
   isLoading = false;
   postNews = PostDTO;
   postVieweds = PostDTO;
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    private pageSiteService: PageSiteService
+  ) {
+    this.pageSiteService.setCurrentPage('home');
+  }
 
   ngOnInit() {
     this.isLoading = true;

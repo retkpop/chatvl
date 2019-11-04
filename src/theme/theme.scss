@@ -252,8 +252,11 @@ ngx-input-tag {
 }
 .btnUser {
   .mat-icon-button {
-    font-size: 30px;
+    font-size: 25px;
   }
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 56px !important;
 }
 @keyframes loading {
   0% {

@@ -2,13 +2,13 @@
   <div class="listMenu">
     <div class="item-menu">
       <ul>
-        <li class="active">
+        <li [ngClass]="currentPage && currentPage==='home'? 'active' : ''">
           <a routerLink="/"><i class="fa fa-home"></i> <span translate>Home</span></a>
         </li>
-        <li>
+        <li [ngClass]="currentPage && currentPage==='popular'? 'active' : ''">
           <a routerLink="/popular"><i class="fab fa-affiliatetheme"></i> <span>Thịnh hành</span></a>
         </li>
-        <li>
+        <li [ngClass]="currentPage && currentPage==='subscribe'? 'active' : ''">
           <a routerLink="/subscribes"><i class="fab fa-snapchat-square"></i> <span>Kênh đăng ký</span></a>
         </li>
       </ul>
@@ -33,7 +33,7 @@
   <div class="subscription-channel" *ngIf="userSubscribes">
     <div class="name-group"><h3>Kênh đăng ký</h3></div>
     <div class="list-channel">
-      <div class="item-channel" *ngFor="let user of userSubscribes">
+      <div class="item-channel" *ngFor="let user of userSubscribes" [ngClass]="currentPage && currentPage===user.login? 'active' : ''">
         <a routerLink="/user/{{user.login}}">
           <span class="avatar">
             <img
